@@ -4,7 +4,6 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   Box,
-  Grid,
   Card,
   CardContent,
   CardActionArea,
@@ -12,6 +11,7 @@ import {
   Chip,
   Paper,
 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import {
   CalendarToday as CalendarIcon,
   Announcement as AnnouncementIcon,
@@ -147,7 +147,7 @@ export default function GroupDashboard() {
       {/* 메뉴 그리드 */}
       <Grid container spacing={2}>
         {menuItems.map((item) => (
-          <Grid item xs={6} sm={6} md={3} key={item.title}>
+          <Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.title}>
             <Card sx={{ height: '100%' }}>
               <CardActionArea
                 component={Link}
