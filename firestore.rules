@@ -1,0 +1,23 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 그룹 문서
+    match /groups/{groupId} {
+      allow read: if true;
+      allow write: if true;
+
+      // 메시지 서브컬렉션
+      match /messages/{messageId} {
+        allow read: if true;
+        allow write: if true;
+      }
+
+      // 타이핑 상태 서브컬렉션
+      match /typingStatus/{userId} {
+        allow read: if true;
+        allow write: if true;
+      }
+    }
+  }
+}
