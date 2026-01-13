@@ -24,7 +24,7 @@ export const getGroupRef = (groupId: string) => doc(db, 'groups', groupId);
 export const getGroup = async (groupId: string) => {
   const groupRef = getGroupRef(groupId);
   const groupSnap = await getDoc(groupRef);
-  return groupSnap.exists() ? { id: groupSnap.id, ...groupSnap.data() } : null;
+  return groupSnap.exists() ? { id: groupSnap.id, ...(groupSnap.data() as DocumentData) } : null;
 };
 
 // 서브컬렉션 헬퍼
@@ -71,7 +71,7 @@ export const subscribeToCollection = (
   return onSnapshot(q, (snapshot) => {
     const data = snapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data(),
+      ...(doc.data() as DocumentData),
     }));
     callback(data);
   });
@@ -81,9 +81,9 @@ export const subscribeToDocument = (
   docRef: any,
   callback: (data: DocumentData | null) => void
 ) => {
-  return onSnapshot(docRef, (snapshot) => {
+  return onSnapshot(docRef, (snapshot: any) => {
     if (snapshot.exists()) {
-      callback({ id: snapshot.id, ...snapshot.data() });
+      callback({ id: snapshot.id, ...(snapshot.data() as DocumentData) });
     } else {
       callback(null);
     }

@@ -17,7 +17,6 @@ import {
   DialogActions,
   Alert,
   Divider,
-  Grid,
 } from '@mui/material';
 import {
   Add as AddIcon,
@@ -147,9 +146,15 @@ export default function Home() {
               </Typography>
             </Divider>
 
-            <Grid container spacing={2}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+                gap: 2,
+              }}
+            >
               {groups.map((group) => (
-                <Grid item xs={12} sm={6} key={group.id}>
+                <Box key={group.id}>
                   <Card
                     sx={{
                       cursor: 'pointer',
@@ -181,9 +186,9 @@ export default function Home() {
                       </Typography>
                     </CardContent>
                   </Card>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </>
         )}
 

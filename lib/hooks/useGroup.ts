@@ -67,7 +67,7 @@ export const useGroup = (groupId?: string) => {
       setLoading(true);
       setError(null);
 
-      const existingGroup = await getGroup(groupId);
+      const existingGroup = await getGroup(groupId) as Group | null;
       if (!existingGroup) {
         throw new Error('그룹을 찾을 수 없습니다');
       }

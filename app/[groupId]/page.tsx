@@ -11,7 +11,6 @@ import {
   Chip,
   Paper,
 } from '@mui/material';
-import Grid2 from '@mui/material/Grid2';
 import {
   CalendarToday as CalendarIcon,
   Announcement as AnnouncementIcon,
@@ -145,35 +144,43 @@ export default function GroupDashboard() {
       </Paper>
 
       {/* 메뉴 그리드 */}
-      <Grid2 container spacing={2}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(2, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+          },
+          gap: 2,
+        }}
+      >
         {menuItems.map((item) => (
-          <Grid2 size={{ xs: 6, sm: 6, md: 3 }} key={item.title}>
-            <Card sx={{ height: '100%' }}>
-              <CardActionArea
-                component={Link}
-                href={item.href}
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  p: 3,
-                }}
-              >
-                <Box sx={{ color: item.color, mb: 2 }}>{item.icon}</Box>
-                <CardContent sx={{ p: 0, textAlign: 'center', width: '100%' }}>
-                  <Typography variant="h6" gutterBottom>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid2>
+          <Card key={item.title} sx={{ height: '100%' }}>
+            <CardActionArea
+              component={Link}
+              href={item.href}
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                p: 3,
+              }}
+            >
+              <Box sx={{ color: item.color, mb: 2 }}>{item.icon}</Box>
+              <CardContent sx={{ p: 0, textAlign: 'center', width: '100%' }}>
+                <Typography variant="h6" gutterBottom>
+                  {item.title}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {item.description}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
         ))}
-      </Grid2>
+      </Box>
 
       {/* 멤버 목록 */}
       <Paper sx={{ p: 3, mt: 3 }}>
