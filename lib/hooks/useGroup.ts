@@ -8,6 +8,8 @@ import {
   getGroupRef,
   getGroup,
   subscribeToDocument,
+  getMessagesRef,
+  addDocument,
 } from '@/lib/firebase/firestore';
 import { addGroupId, getUser } from '@/lib/firebase/auth';
 
@@ -88,6 +90,17 @@ export const useGroup = (groupId?: string) => {
         },
         { merge: true }
       );
+
+      // 시스템 메시지 생성
+      const messagesRef = getMessagesRef(groupId);
+      await addDocument(messagesRef, {
+        groupId,
+        content: `${memberName}님이 입장하셨습니다`,
+        type: 'system',
+        author: 'system',
+        isEdited: false,
+        readBy: [],
+      });
 
       addGroupId(groupId);
       setLoading(false);

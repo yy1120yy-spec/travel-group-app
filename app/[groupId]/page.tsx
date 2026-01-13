@@ -18,6 +18,7 @@ import {
   Restaurant as RestaurantIcon,
   People as PeopleIcon,
   Share as ShareIcon,
+  Chat as ChatIcon,
 } from '@mui/icons-material';
 import { useGroup } from '@/lib/hooks/useGroup';
 
@@ -56,6 +57,13 @@ export default function GroupDashboard() {
       icon: <RestaurantIcon sx={{ fontSize: 48 }} />,
       href: `/${groupId}/menu`,
       color: 'success.main',
+    },
+    {
+      title: '채팅',
+      description: '그룹 멤버들과 실시간 대화',
+      icon: <ChatIcon sx={{ fontSize: 48 }} />,
+      href: `/${groupId}/chat`,
+      color: 'info.main',
     },
   ];
 

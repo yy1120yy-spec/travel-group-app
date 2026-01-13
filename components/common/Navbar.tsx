@@ -7,6 +7,7 @@ import {
   Announcement as AnnouncementIcon,
   HowToVote as VoteIcon,
   Restaurant as RestaurantIcon,
+  Chat as ChatIcon,
 } from '@mui/icons-material';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -24,6 +25,7 @@ export default function Navbar({ groupId }: NavbarProps) {
     if (pathname.includes('/announcements')) return 'announcements';
     if (pathname.includes('/votes')) return 'votes';
     if (pathname.includes('/menu')) return 'menu';
+    if (pathname.includes('/chat')) return 'chat';
     return 'dashboard';
   };
 
@@ -43,6 +45,9 @@ export default function Navbar({ groupId }: NavbarProps) {
         break;
       case 'menu':
         router.push(`/${groupId}/menu`);
+        break;
+      case 'chat':
+        router.push(`/${groupId}/chat`);
         break;
     }
   };
@@ -87,6 +92,11 @@ export default function Navbar({ groupId }: NavbarProps) {
           label="메뉴"
           value="menu"
           icon={<RestaurantIcon />}
+        />
+        <BottomNavigationAction
+          label="채팅"
+          value="chat"
+          icon={<ChatIcon />}
         />
       </BottomNavigation>
     </Paper>

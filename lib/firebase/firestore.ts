@@ -44,6 +44,12 @@ export const getVotesRef = (groupId: string) => getSubCollection(groupId, 'votes
 // 메뉴 관련
 export const getMenusRef = (groupId: string) => getSubCollection(groupId, 'menus');
 
+// 채팅 관련
+export const getMessagesRef = (groupId: string) => getSubCollection(groupId, 'messages');
+
+// 타이핑 상태 관련
+export const getTypingStatusRef = (groupId: string) => getSubCollection(groupId, 'typingStatus');
+
 // 범용 CRUD 헬퍼
 export const addDocument = async (collectionRef: any, data: any) => {
   const docRef = await addDoc(collectionRef, {
