@@ -11,7 +11,7 @@ import {
   Chip,
   Paper,
 } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid2 from '@mui/material/Grid2';
 import {
   CalendarToday as CalendarIcon,
   Announcement as AnnouncementIcon,
@@ -145,9 +145,9 @@ export default function GroupDashboard() {
       </Paper>
 
       {/* 메뉴 그리드 */}
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         {menuItems.map((item) => (
-          <Grid size={{ xs: 6, sm: 6, md: 3 }} key={item.title}>
+          <Grid2 size={{ xs: 6, sm: 6, md: 3 }} key={item.title}>
             <Card sx={{ height: '100%' }}>
               <CardActionArea
                 component={Link}
@@ -171,9 +171,9 @@ export default function GroupDashboard() {
                 </CardContent>
               </CardActionArea>
             </Card>
-          </Grid>
+          </Grid2>
         ))}
-      </Grid>
+      </Grid2>
 
       {/* 멤버 목록 */}
       <Paper sx={{ p: 3, mt: 3 }}>
